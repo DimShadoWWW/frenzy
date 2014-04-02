@@ -2,8 +2,8 @@ package commands
 
 import (
 	"fmt"
-	"github.com/stevedomin/cli"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/stevedomin/cli"
 	"github.com/stevedomin/termtable"
 )
 

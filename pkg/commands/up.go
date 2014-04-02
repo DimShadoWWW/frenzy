@@ -2,9 +2,10 @@ package commands
 
 import (
 	"fmt"
-	"github.com/stevedomin/cli"
 	"github.com/stevedomin/frenzy/pkg"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/DimShadoWWW/terminal/color"
+	"github.com/stevedomin/cli"
 	"sync"
 )
 
@@ -34,7 +35,7 @@ func Up(env *environment.Environment) *cli.Command {
 					node.Port = nodeInfo.Port
 					node.Status = "running"
 				} else {
-					fmt.Printf("[%s] already running\n", node.Hostname)
+					color.Println("[@r" + node.Hostname + color.ResetCode + "] already running\n")
 				}
 
 				if flagProvision {

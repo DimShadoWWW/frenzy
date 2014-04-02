@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stevedomin/cli"
 	"github.com/stevedomin/frenzy/pkg"
 	"github.com/stevedomin/frenzy/pkg/commands"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/DimShadoWWW/terminal/color"
+	"github.com/stevedomin/cli"
 	"io/ioutil"
 	"os"
 )
@@ -45,12 +46,12 @@ evYRSe4TuyhP8954HQXgSbAiNfMbNhW0CzSsguBWsoKmwbInsinwLTU=
 func main() {
 	config, err := loadConfig()
 	if err != nil {
-		fmt.Println(err)
+		color.Println("@r", err)
 		os.Exit(1)
 	}
 
 	if err := createFrenzyDirStructure(); err != nil {
-		fmt.Println(err)
+		color.Println("@r", err)
 		os.Exit(1)
 	}
 

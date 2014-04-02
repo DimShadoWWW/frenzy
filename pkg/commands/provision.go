@@ -1,10 +1,11 @@
 package commands
 
 import (
-	"fmt"
-	"github.com/stevedomin/cli"
+	// "fmt"
 	"github.com/stevedomin/frenzy/pkg"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/DimShadoWWW/terminal/color"
+	"github.com/stevedomin/cli"
 	"sync"
 )
 
@@ -17,7 +18,7 @@ func Provision(env *environment.Environment) *cli.Command {
 			go func(node *pkg.Node) {
 				defer wg.Done()
 				if node.Status != "running" {
-					fmt.Printf("[%s] skip provisioning since node is not running\n", node.Hostname)
+					color.Println("[@r" + node.Hostname + color.ResetCode + "] skip provisioning since node is not running\n")
 					return
 				}
 				for _, provisioner := range node.Provisioners {

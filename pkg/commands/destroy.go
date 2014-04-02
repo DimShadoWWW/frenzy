@@ -2,9 +2,10 @@ package commands
 
 import (
 	"fmt"
-	"github.com/stevedomin/cli"
 	"github.com/stevedomin/frenzy/pkg"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/DimShadoWWW/terminal/color"
+	"github.com/stevedomin/cli"
 	"sync"
 )
 
@@ -22,7 +23,7 @@ func Destroy(env *environment.Environment) *cli.Command {
 						fmt.Println(err)
 					}
 				} else {
-					fmt.Printf("[%s] already destroyed\n", node.Hostname)
+					color.Println("[@r" + node.Hostname + color.ResetCode + "] already destroyed\n")
 				}
 
 				err := env.DestroyState()

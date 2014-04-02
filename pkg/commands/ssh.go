@@ -2,9 +2,10 @@ package commands
 
 import (
 	"fmt"
-	"github.com/stevedomin/cli"
 	"github.com/stevedomin/frenzy/pkg"
 	"github.com/stevedomin/frenzy/pkg/environment"
+	"github.com/DimShadoWWW/terminal/color"
+	"github.com/stevedomin/cli"
 	"os"
 	"os/exec"
 )
@@ -13,7 +14,7 @@ func SSH(env *environment.Environment) *cli.Command {
 	sshCmd := cli.NewCommand("ssh")
 	sshCmd.HandlerFunc = func(args []string) {
 		if len(args) == 0 {
-			fmt.Println("You need to specify the node you want to SSH into")
+			color.Println("@rYou need to specify the node you want to SSH into")
 			fmt.Println("Example:")
 			fmt.Println("	$ frenzy ssh node01")
 			fmt.Println("")
@@ -30,7 +31,7 @@ func SSH(env *environment.Environment) *cli.Command {
 		}
 
 		if node.Status != "running" {
-			fmt.Printf("[%s] Can't SSH. The node is not running.\n", node.Hostname)
+			color.Println("@rError: " + color.ResetCode + "[@r" + node.Hostname + color.ResetCode + "] Can't SSH. The node is not running.")
 			return
 		}
 
